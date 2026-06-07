@@ -98,8 +98,8 @@ Prodigy-Infotech-ML-Internship/
 
 **Organization:** Prodigy Infotech  
 **Domain:** Machine Learning  
-**Duration:** [Start Date] — [End Date]  
-**Intern:** [Your Name]  
+**Duration:** [1st June,2026] — [30th June,2026]  
+**Intern:** [Venum Mery]  
 
 ---
 
