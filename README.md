@@ -15,7 +15,28 @@ This repository contains all 5 tasks completed during the **Machine Learning Int
 | PRODIGY_ML_05 | Food Recognition & Calorie Estimation | MobileNetV2 (Transfer Learning) | [Kaggle](https://www.kaggle.com/datasets/dansbecker/food-101) |
 
 ---
+## 🚀 How to Run
 
+1. Go to the dataset link for the task (see table below)
+2. Click the **"Code"** tab on that page
+3. Click **"New Notebook"**
+4. Copy the task code and paste it into the notebook
+5. Click **"Run All"**
+
+> The dataset will be automatically attached when you create
+> a notebook from the dataset page.
+
+## 📂 Dataset Links
+
+| Task | Topic | Dataset |
+|------|-------|---------|
+| Task 1 | House Price Prediction | [Open Dataset](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/code) |
+| Task 2 | Customer Segmentation | [Open Dataset](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/code) |
+| Task 3 | Cats vs Dogs Classification | [Open Dataset](https://www.kaggle.com/c/dogs-vs-cats/code) |
+| Task 4 | Hand Gesture Recognition | [Open Dataset](https://www.kaggle.com/datasets/gti-upm/leapgestrecog/code) |
+| Task 5 | Food Recognition & Calories | [Open Dataset](https://www.kaggle.com/datasets/dansbecker/food-101/code) |
+
+---
 ## 📁 Repository Structure
 
 ```
