@@ -8,7 +8,7 @@ This repository contains all 5 tasks completed during the **Machine Learning Int
 
 | Task | Topic | Algorithm | Dataset |
 |------|-------|-----------|---------|
-| PRODIGY_ML_01 | House Price Prediction | Linear Regression | [Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data) |
+| PRODIGY_ML_01 | House Price Prediction | Linear Regression | [Kaggle](kaggle.com/competitions/house-prices-advanced-regression-techniques/code) |
 | PRODIGY_ML_02 | Customer Segmentation | K-Means Clustering | [Kaggle](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) |
 | PRODIGY_ML_03 | Cats vs Dogs Classification | Support Vector Machine (SVM) | [Kaggle](kaggle.com/datasets/tongpython/cat-and-dog/code) |
 | PRODIGY_ML_04 | Hand Gesture Recognition | CNN (Deep Learning) | [Kaggle](https://www.kaggle.com/datasets/gti-upm/leapgestrecog) |
