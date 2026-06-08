@@ -14,10 +14,9 @@ from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import LabelEncoder
 import warnings
 warnings.filterwarnings('ignore')
-
 # ── 1. Load Data ──────────────────────────────────────────────
 # Upload train.csv from Kaggle to your Colab/Kaggle environment
-df = pd.read_csv('train.csv')
+df = pd.read_csv('/kaggle/input/competitions/house-prices-advanced-regression-techniques/train.csv')
 print("Dataset Shape:", df.shape)
 print("\nFirst 5 rows:")
 print(df.head())
@@ -47,6 +46,7 @@ axes[2].scatter(df_model['FullBath'], df_model['SalePrice'], alpha=0.4, color='g
 axes[2].set_xlabel('Full Bathrooms')
 axes[2].set_ylabel('Sale Price ($)')
 axes[2].set_title('Bathrooms vs Sale Price')
+
 
 plt.tight_layout()
 plt.savefig('task1_eda.png', dpi=100)
