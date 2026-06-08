@@ -4,6 +4,7 @@
 # Dataset: https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data
 # ============================================================
 
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,17 +12,26 @@ import seaborn as sns
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.preprocessing import LabelEncoder
 import warnings
 warnings.filterwarnings('ignore')
+
 # ── 1. Load Data ──────────────────────────────────────────────
-import os
+train_path = None
 for root, dirs, files in os.walk('/kaggle/input'):
-    for file in files:
-        if file == 'train.csv':
-            train_path = os.path.join(root, file)
+    for f in files:
+        if f == 'train.csv':
+            train_path = os.path.join(root, f)
             break
+    if train_path:
+        break
+
+if train_path is None:
+    raise FileNotFoundError("train.csv not found! Please add the House Prices dataset.")
+
 df = pd.read_csv(train_path)
+print("Dataset Shape:", df.shape)
+print("\nFirst 5 rows:")
+print(df.head())
 
 # ── 2. Select Key Features ────────────────────────────────────
 features = ['GrLivArea', 'BedroomAbvGr', 'FullBath', 'HalfBath',
@@ -48,7 +58,6 @@ axes[2].scatter(df_model['FullBath'], df_model['SalePrice'], alpha=0.4, color='g
 axes[2].set_xlabel('Full Bathrooms')
 axes[2].set_ylabel('Sale Price ($)')
 axes[2].set_title('Bathrooms vs Sale Price')
-
 
 plt.tight_layout()
 plt.savefig('task1_eda.png', dpi=100)
@@ -87,7 +96,6 @@ print(f"  RMSE : ${rmse:,.2f}")
 print(f"  R²   : {r2:.4f}")
 print(f"  Accuracy (R²): {r2*100:.2f}%")
 
-# Feature Coefficients
 coef_df = pd.DataFrame({'Feature': features, 'Coefficient': model.coef_})
 print("\n── Feature Coefficients ──")
 print(coef_df.sort_values('Coefficient', ascending=False).to_string(index=False))
