@@ -15,12 +15,12 @@ from sklearn.preprocessing import LabelEncoder
 import warnings
 warnings.filterwarnings('ignore')
 # ── 1. Load Data ──────────────────────────────────────────────
-# ── 1. Load Data ──────────────────────────────────────────────
 import os
 for root, dirs, files in os.walk('/kaggle/input'):
     for file in files:
         if file == 'train.csv':
             train_path = os.path.join(root, file)
+            break
 df = pd.read_csv(train_path)
 
 # ── 2. Select Key Features ────────────────────────────────────
