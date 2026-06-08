@@ -15,11 +15,13 @@ from sklearn.preprocessing import LabelEncoder
 import warnings
 warnings.filterwarnings('ignore')
 # ── 1. Load Data ──────────────────────────────────────────────
-# Upload train.csv from Kaggle to your Colab/Kaggle environment
-df = pd.read_csv('/kaggle/input/competitions/house-prices-advanced-regression-techniques/train.csv')
-print("Dataset Shape:", df.shape)
-print("\nFirst 5 rows:")
-print(df.head())
+# ── 1. Load Data ──────────────────────────────────────────────
+import os
+for root, dirs, files in os.walk('/kaggle/input'):
+    for file in files:
+        if file == 'train.csv':
+            train_path = os.path.join(root, file)
+df = pd.read_csv(train_path)
 
 # ── 2. Select Key Features ────────────────────────────────────
 features = ['GrLivArea', 'BedroomAbvGr', 'FullBath', 'HalfBath',
