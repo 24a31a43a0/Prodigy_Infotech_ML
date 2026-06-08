@@ -4,6 +4,7 @@
 # Dataset: https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python
 # ============================================================
 
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,43 +16,49 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # ── 1. Load Data ──────────────────────────────────────────────
-# Upload Mall_Customers.csv from Kaggle
-df = pd.read_csv('/kaggle/input/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/Mall_Customers.csv')
+mall_path = None
+for root, dirs, files in os.walk('/kaggle/input'):
+    for f in files:
+        if f == 'Mall_Customers.csv':
+            mall_path = os.path.join(root, f)
+            break
+    if mall_path:
+        break
+
+if mall_path is None:
+    raise FileNotFoundError("Mall_Customers.csv not found! Please add the Customer Segmentation dataset.")
+
+df = pd.read_csv(mall_path)
 print("Dataset Shape:", df.shape)
 print("\nFirst 5 rows:")
 print(df.head())
-print("\nColumn Info:")
-print(df.info())
 
 # ── 2. EDA ────────────────────────────────────────────────────
 fig, axes = plt.subplots(1, 3, figsize=(15, 4))
 
 axes[0].hist(df['Age'], bins=20, color='steelblue', edgecolor='white')
 axes[0].set_title('Age Distribution')
-axes[0].set_xlabel('Age')
 
 axes[1].hist(df['Annual Income (k$)'], bins=20, color='coral', edgecolor='white')
 axes[1].set_title('Annual Income Distribution')
-axes[1].set_xlabel('Annual Income (k$)')
 
 axes[2].hist(df['Spending Score (1-100)'], bins=20, color='green', edgecolor='white')
 axes[2].set_title('Spending Score Distribution')
-axes[2].set_xlabel('Spending Score')
 
 plt.tight_layout()
 plt.savefig('task2_eda.png', dpi=100)
 plt.show()
 
-# Gender distribution
-print("\nGender Distribution:")
-print(df['Gender'].value_counts())
+# Gender column name check
+gender_col = 'Genre' if 'Genre' in df.columns else 'Gender'
+print(f"\nGender Distribution:\n{df[gender_col].value_counts()}")
 
 # ── 3. Feature Selection & Scaling ───────────────────────────
 X = df[['Annual Income (k$)', 'Spending Score (1-100)']].values
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# ── 4. Elbow Method - Find Optimal K ─────────────────────────
+# ── 4. Elbow Method ───────────────────────────────────────────
 inertia = []
 silhouette_scores = []
 K_range = range(2, 11)
@@ -63,7 +70,6 @@ for k in K_range:
     silhouette_scores.append(silhouette_score(X_scaled, km.labels_))
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-
 axes[0].plot(K_range, inertia, 'bo-', markersize=8)
 axes[0].set_xlabel('Number of Clusters (K)')
 axes[0].set_ylabel('Inertia')
@@ -79,9 +85,8 @@ axes[1].set_title('Silhouette Score vs K')
 plt.tight_layout()
 plt.savefig('task2_elbow.png', dpi=100)
 plt.show()
-print(f"\nOptimal K = 5 (from Elbow Method)")
 
-# ── 5. Train K-Means with K=5 ─────────────────────────────────
+# ── 5. Train K-Means ──────────────────────────────────────────
 kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
 df['Cluster'] = kmeans.fit_predict(X_scaled)
 
@@ -90,9 +95,6 @@ print(df['Cluster'].value_counts().sort_index())
 
 # ── 6. Visualize Clusters ─────────────────────────────────────
 colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7']
-cluster_names = ['Low Income\nLow Spend', 'High Income\nLow Spend',
-                 'Medium Income\nMedium Spend', 'Low Income\nHigh Spend',
-                 'High Income\nHigh Spend']
 
 plt.figure(figsize=(9, 6))
 for i in range(5):
@@ -101,7 +103,6 @@ for i in range(5):
                 df[mask]['Spending Score (1-100)'],
                 c=colors[i], s=80, alpha=0.7, label=f'Cluster {i}')
 
-# Plot centroids (inverse transform)
 centers_orig = scaler.inverse_transform(kmeans.cluster_centers_)
 plt.scatter(centers_orig[:, 0], centers_orig[:, 1],
             c='black', marker='X', s=200, zorder=5, label='Centroids')
@@ -114,10 +115,11 @@ plt.tight_layout()
 plt.savefig('task2_clusters.png', dpi=100)
 plt.show()
 
-# ── 7. Cluster Summary ────────────────────────────────────────
+# ── 7. Summary ────────────────────────────────────────────────
 print("\n── Cluster Summary ──")
 summary = df.groupby('Cluster')[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']].mean().round(1)
 print(summary)
 
 silhouette_avg = silhouette_score(X_scaled, df['Cluster'])
 print(f"\nSilhouette Score (K=5): {silhouette_avg:.4f}")
+
