@@ -8,9 +8,9 @@ This repository contains all 5 tasks completed during the **Machine Learning Int
 
 | Task | Topic | Algorithm | Dataset |
 |------|-------|-----------|---------|
-| PRODIGY_ML_01 | House Price Prediction | Linear Regression | [Kaggle](kaggle.com/competitions/house-prices-advanced-regression-techniques/code) |
+| PRODIGY_ML_01 | House Price Prediction | Linear Regression | [Kaggle](https://kaggle.com/competitions/house-prices-advanced-regression-techniques/code) |
 | PRODIGY_ML_02 | Customer Segmentation | K-Means Clustering | [Kaggle](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) |
-| PRODIGY_ML_03 | Cats vs Dogs Classification | Support Vector Machine (SVM) | [Kaggle](kaggle.com/datasets/tongpython/cat-and-dog/code) |
+| PRODIGY_ML_03 | Cats vs Dogs Classification | Support Vector Machine (SVM) | [Kaggle](https://kaggle.com/datasets/tongpython/cat-and-dog/code) |
 | PRODIGY_ML_04 | Hand Gesture Recognition | CNN (Deep Learning) | [Kaggle](https://www.kaggle.com/datasets/gti-upm/leapgestrecog) |
 | PRODIGY_ML_05 | Food Recognition & Calorie Estimation | MobileNetV2 (Transfer Learning) | [Kaggle](https://www.kaggle.com/datasets/dansbecker/food-101) |
 
@@ -30,9 +30,9 @@ This repository contains all 5 tasks completed during the **Machine Learning Int
 
 | Task | Topic | Dataset |
 |------|-------|---------|
-| Task 1 | House Price Prediction | [Open Dataset](kaggle.com/competitions/house-prices-advanced-regression-techniques/code) |
+| Task 1 | House Price Prediction | [Open Dataset](https://kaggle.com/competitions/house-prices-advanced-regression-techniques/code) |
 | Task 2 | Customer Segmentation | [Open Dataset](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/code) |
-| Task 3 | Cats vs Dogs Classification | [Open Dataset](kaggle.com/datasets/tongpython/cat-and-dog/code) |
+| Task 3 | Cats vs Dogs Classification | [Open Dataset](https://kaggle.com/datasets/tongpython/cat-and-dog/code) |
 | Task 4 | Hand Gesture Recognition | [Open Dataset](https://www.kaggle.com/datasets/gti-upm/leapgestrecog/code) |
 | Task 5 | Food Recognition & Calories | [Open Dataset](https://www.kaggle.com/datasets/dansbecker/food-101/code) |
 
